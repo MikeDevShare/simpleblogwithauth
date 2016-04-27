@@ -16,7 +16,7 @@ class comments extends Model
 	// returns post of any comment
 	public function post()
 	{
-	return $this->belongsTo('App\Posts','on_post');
+	return $this->belongsTo('App\posts','post_id');
 	}
 
 }

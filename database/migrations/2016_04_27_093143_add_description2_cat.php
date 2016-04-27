@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Categories extends Migration
+class AddDescription2Cat extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,8 @@ class Categories extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('categories',function(Blueprint $table){
-            $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('slug')->unique();  
-            $table->timestamps();          
+        Schema::table('categories', function($table){
+            $table->text('description');
         });
     }
 
@@ -28,6 +24,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        //
     }
 }

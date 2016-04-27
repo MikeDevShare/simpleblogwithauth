@@ -13,7 +13,7 @@
                       <?php foreach( $posts as $post ): ?>
                       <div class="list-group">
                         <div class="list-group-item">
-                          <h3><a href="<?php echo e(url('/'.$post->slug)); ?>"><?php echo e($post->title); ?></a>
+                          <h3><a href="<?php echo e(url('/blog/'.$post->slug)); ?>"><?php echo e($post->post_title); ?></a>
                             <?php if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin())): ?>
                               <?php if($post->active == '1'): ?>
                               <button class="btn" style="float: right"><a href="<?php echo e(url('edit/'.$post->slug)); ?>">Edit Post</a></button>

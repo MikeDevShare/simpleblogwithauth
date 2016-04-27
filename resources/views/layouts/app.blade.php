@@ -25,7 +25,7 @@
         }
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" class="">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -50,6 +50,9 @@
                     <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('/blog') }}">Blog</a></li>
                     <li><a href="{{ url('/shop') }}">Shop</a></li>
+                    @if (!Auth::guest())
+                     <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -66,7 +69,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ url('/new-post') }}">Add new post</a>
+                                    <a href="{{ url('/dashboard/new-post') }}">Add new post</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts</a>
@@ -223,19 +226,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-    <script type="text/javascript">
-    (function($){
-        $(document).ready(function(){
-           
-            $('.nav li a.rel').click(function(e){
-                e.preventDefault();                
-                $('#'+$(this).attr('rel')).fadeIn('slow');
-            });
-            $('.overlay').click(function(e){
-                $('.modal').fadeOut('slow');
-            });
-        });
-    })(jQuery);
-    </script>
+    <script src=" {{ URL::asset('assets/js/main.js') }}"></script>
+ 
 </body>
 </html>
